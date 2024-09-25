@@ -1,0 +1,76 @@
+﻿@model IEnumerable<NCRReport>
+
+@{
+    ViewBag.Title = "NCR Reports";
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>NCR Report List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="mb-4">NCR Reports</h2>
+
+        <!-- Button to Create New NCR Report -->
+        <a href="@Url.Action("Initior")" class="btn btn-primary mb-4">Create New NCR Report</a>
+
+        <table class="table table-striped table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>NCR No</th>
+                    <th>Reporting Personnel</th>
+                    <th>Designation</th>
+                    <th>Department</th>
+                    <th>Date</th>
+                    <th>Category</th>
+                    <th>Problem Detail</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var report in Model)
+                {
+                    <tr data-ncrno="@report.NCRNo" data-status="@report.Status">
+                        <td>@report.NCRNo</td>
+                        <td>@report.ReportingPersonnel</td>
+                        <td>@report.Designation</td>
+                        <td>@report.Department</td>
+                        <td>@report.Date.ToString("MM/dd/yyyy")</td>
+                        <td>@report.Category</td>
+                        <td>@report.ProblemDetail</td>
+                        <td>
+                            <span class="badge bg-@(report.Status == "Accepted" ? "success" : report.Status == "Rejected" ? "danger" : "warning")">
+                                @report.Status
+                            </span>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Add double-click event on table rows
+            $('tbody tr').on('dblclick', function() {
+                // Get the status and NCR number from the data attributes
+                var status = $(this).data('status');
+                var ncrNo = $(this).data('ncrno');
+
+                // Redirect to the Create view only if the report is "Rejected"
+                if (status === 'Rejected') {
+                    window.location.href = '@Url.Action("Initior")' + '?ncrNo=' + ncrNo;
+                } else {
+                    alert('Only rejected reports can be edited.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

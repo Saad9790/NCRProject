@@ -1,0 +1,90 @@
+﻿@model IEnumerable<NCRReport>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title> Report List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="mb-4">NCR All Task Assigned to Me</h2>
+
+        <table class="table table-striped table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>NCR No</th>
+                    <th>Reporting Personnel</th>
+                    <th>Designation</th>
+                    <th>Department</th>
+                    <th>Date</th>
+                    <th>Category</th>
+                    <th>Problem Detail</th>
+                    <th>Assigned By</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var report in Model)
+                {
+                    <tr data-ncrno="@report.NCRNo" data-status="@report.Status">
+                        <td>@report.NCRNo</td>
+                        <td>@report.ReportingPersonnel</td>
+                        <td>@report.Designation</td>
+                        <td>@report.Department</td>
+                        <td>@report.Date.ToString("MM/dd/yyyy")</td>
+                        <td>@report.Category</td>
+                        <td>@report.ProblemDetail</td>
+                        <td>Haider</td>
+                        <td>
+                            <span class="badge bg-@(report.Status == "Resolved" ? "success" : report.Status == "Rejected" ? "danger" : "warning")">
+                                @report.Status
+                            </span>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <!-- New input section -->
+        <div class="row">
+            <div class="col-md-3">
+                <label for="ncrInput">Immediate corrective session</label>
+            </div>
+            <div class="col-md-4">
+                <input type="text" id="ncrInput" class="form-control" placeholder="Enter details here..." />
+            </div>
+            <div class="col-md-4">
+                <button id="submitButton" class="btn btn-primary mt-2">Submit</button>
+            </div>
+
+
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+        $('tbody tr').on('dblclick', function() {
+            var status = $(this).data('status');
+            var ncrNo = $(this).data('ncrno');
+
+            if (status === 'Rejected') {
+                window.location.href = '@Url.Action("Initior")' + '?ncrNo=' + ncrNo;
+            } else {
+                alert('Only rejected reports can be edited.');
+            }
+        });
+
+        // Handle the submit button click
+        $('#submitButton').on('click', function() {
+            var inputValue = $('#ncrInput').val();
+            // Add your logic to handle the input value here
+            alert('Submitted: ' + inputValue);
+        });
+    });
+
+    </script>
+</body>
+</html>

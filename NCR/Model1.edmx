@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="KamalESStagingDBAWSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'KamalESStagingDBAWS.dbo.tbl_UsersAcount' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbl_UsersAcount">
+          <Key>
+            <PropertyRef Name="AccountId" />
+          </Key>
+          <Property Name="AccountId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmpID" Type="varchar" MaxLength="50" />
+          <Property Name="FullName" Type="varchar" MaxLength="60" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" />
+          <Property Name="NormalPassword" Type="varchar(max)" />
+          <Property Name="SaltPassword" Type="varchar(max)" />
+          <Property Name="EmailID" Type="varchar" MaxLength="50" />
+          <Property Name="EmailConfirmed" Type="bit" />
+          <Property Name="MobileNumber" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedDateTime" Type="datetime" />
+          <Property Name="LastUpdatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="LastUpdatedDateTime" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsOnline" Type="bit" />
+          <Property Name="GroupID" Type="int" />
+          <Property Name="UserImagePath" Type="varchar" MaxLength="200" />
+          <Property Name="Signatures" Type="varchar(max)" />
+        </EntityType>
+        <EntityContainer Name="KamalESStagingDBAWSModelStoreContainer">
+          <EntitySet Name="tbl_UsersAcount" EntityType="Self.tbl_UsersAcount" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbl_UsersAcount].[AccountId] AS [AccountId], 
+    [tbl_UsersAcount].[EmpID] AS [EmpID], 
+    [tbl_UsersAcount].[FullName] AS [FullName], 
+    [tbl_UsersAcount].[UserName] AS [UserName], 
+    [tbl_UsersAcount].[NormalPassword] AS [NormalPassword], 
+    [tbl_UsersAcount].[SaltPassword] AS [SaltPassword], 
+    [tbl_UsersAcount].[EmailID] AS [EmailID], 
+    [tbl_UsersAcount].[EmailConfirmed] AS [EmailConfirmed], 
+    [tbl_UsersAcount].[MobileNumber] AS [MobileNumber], 
+    [tbl_UsersAcount].[CreatedBy] AS [CreatedBy], 
+    [tbl_UsersAcount].[CreatedDateTime] AS [CreatedDateTime], 
+    [tbl_UsersAcount].[LastUpdatedBy] AS [LastUpdatedBy], 
+    [tbl_UsersAcount].[LastUpdatedDateTime] AS [LastUpdatedDateTime], 
+    [tbl_UsersAcount].[IsActive] AS [IsActive], 
+    [tbl_UsersAcount].[IsOnline] AS [IsOnline], 
+    [tbl_UsersAcount].[GroupID] AS [GroupID], 
+    [tbl_UsersAcount].[UserImagePath] AS [UserImagePath], 
+    [tbl_UsersAcount].[Signatures] AS [Signatures]
+    FROM [dbo].[tbl_UsersAcount] AS [tbl_UsersAcount]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="KamalESStagingDBAWSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbl_UsersAcount">
+          <Key>
+            <PropertyRef Name="AccountId" />
+          </Key>
+          <Property Name="AccountId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmpID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FullName" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NormalPassword" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SaltPassword" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EmailID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmailConfirmed" Type="Boolean" />
+          <Property Name="MobileNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastUpdatedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsOnline" Type="Boolean" />
+          <Property Name="GroupID" Type="Int32" />
+          <Property Name="UserImagePath" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Signatures" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="KamalESStagingDBAWSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_UsersAcount" EntityType="Self.tbl_UsersAcount" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="KamalESStagingDBAWSModelStoreContainer" CdmEntityContainer="KamalESStagingDBAWSEntities">
+          <EntitySetMapping Name="tbl_UsersAcount">
+            <EntityTypeMapping TypeName="KamalESStagingDBAWSModel.tbl_UsersAcount">
+              <MappingFragment StoreEntitySet="tbl_UsersAcount">
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="NormalPassword" ColumnName="NormalPassword" />
+                <ScalarProperty Name="SaltPassword" ColumnName="SaltPassword" />
+                <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="LastUpdatedDateTime" ColumnName="LastUpdatedDateTime" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsOnline" ColumnName="IsOnline" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+                <ScalarProperty Name="UserImagePath" ColumnName="UserImagePath" />
+                <ScalarProperty Name="Signatures" ColumnName="Signatures" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
